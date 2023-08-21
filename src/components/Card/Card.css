@@ -1,0 +1,25 @@
+.card {
+    width: 95%;
+    margin: 0 auto;
+    min-height: 530px;
+    border: .01rem rgb(207, 207, 207) solid;
+    border-top: none;
+    border-left: none;
+    margin-bottom: .5rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.cardName{
+    font-weight: 900;
+}
+.promo{
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: red;
+}
+@media screen and (min-width: 576px){
+    .card{
+        width: 23%;
+    }
+    
+}
