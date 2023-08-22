@@ -20,8 +20,14 @@ function Logo() {
     </div>;
 }
 function MenuEntrie(props) {
+    const menuContext = useContext(MenuContext);
     return (
-        <a href={props.url} onClick={(e)=>{e.preventDefault()}}>
+        <a href={props.url} onClick={(e)=>{
+            e.preventDefault();
+            props.text === "Panier" ?
+             menuContext.fonctDisplayPanier(menuContext.displayPanier)
+            : <></>
+            }}>
             <li>{props.text}</li>
         </a>
     );

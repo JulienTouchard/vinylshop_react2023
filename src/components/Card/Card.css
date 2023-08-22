@@ -7,15 +7,21 @@
     border-left: none;
     margin-bottom: .5rem;
     background-color: rgb(255, 255, 255);
+    position:relative;
+    padding: 1rem;
 }
 
 .cardName{
     font-weight: 900;
 }
 .promo{
+    position: absolute;
+    transform: rotate(10deg);
     font-weight: 900;
     font-size: 1.5rem;
     color: red;
+    top: 1rem;
+    right: 1rem;
 }
 @media screen and (min-width: 576px){
     .card{
