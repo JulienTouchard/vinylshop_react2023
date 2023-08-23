@@ -4,6 +4,7 @@ import Boutique from './components/Boutique/Boutique';
 import './App.css';
 import articles from './articles';
 import { BoutiqueContext } from './BoutiqueContext';
+import { Footer } from './components/Footer/Footer';
 import { MenuContext } from './MenuContext';
 import { Panier } from './components/Panier/Panier';
 function App() {
@@ -31,6 +32,7 @@ function App() {
       ],
       "burgerButton": burgerButton,
       "fonctDisplayPanier": fonctDisplayPanier
+      /* ajouter les deux fonction display pour Boutique et Contact */
     }
   )
 
@@ -55,12 +57,31 @@ function App() {
   }
   function burgerButton(disp) {
     //let displayUlTmp = !stateMenu.displayUl
+    if (disp) {
+      document.body.style.height = 'auto';
+      document.body.style.overflowY = 'visible';
+      
+    } else {
+      document.body.style.height = '100vh';
+      document.body.style.overflowY = 'hidden';
+    }
     setStateMenu({
       ...stateMenu,
       "displayUl": !disp
     })
   }
+  /* creer une fonction pour l'affichage de boutique en fonction de displayBoutique ... */
+  /* creer une fonction pour l'affichage de boutique en fonction de displayContact ... */
   function fonctDisplayPanier(disp) {
+    if (disp) {
+      document.body.style.height = 'auto';
+      document.body.style.overflowY = 'visible';
+      
+    } else {
+      document.body.style.height = '100vh';
+      document.body.style.overflowY = 'hidden';
+    }
+
     setStateMenu({
       ...stateMenu,
       "displayPanier": !disp
@@ -111,10 +132,10 @@ function App() {
       }
     })
     // array.splice(index,nb_elements) me permet de supprimer l'index supprIndex
+    const tmpTabPanier = stateArticles.tabPanier;
     tmpTabPanier.splice(supprIndex, 1);
     // Comme dans la fonction précédente je doit maintenant gérer la quantité 
     // d'article disponible et y ajouter une unité
-    const tmpTabPanier = stateArticles.tabPanier;
     let articlesTmp = stateArticles.articles;
     articlesTmp.map((valeur, index) => {
       if (index === id) {
@@ -158,9 +179,11 @@ function App() {
               :
               <></>
           }
+          {/* displayBoutique -> utiliser une bool dans le stateMenu*/}
           <Boutique articles={stateArticles.articles}></Boutique>
+          {/* displayContact -> utiliser une bool dans le stateMenu*/}
         </main>
-        <footer></footer>
+        <Footer></Footer>
       </BoutiqueContext.Provider>
     </MenuContext.Provider>
   );

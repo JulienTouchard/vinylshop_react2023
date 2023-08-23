@@ -18,8 +18,7 @@ const Card = (props) => {
         <img src={props.article.url}></img>
       </div>
       <p className="cardName">{props.article.name}</p>
-      <p className="cardPrice">{props.article.price} €</p>
-      <p className='qte'>{props.article.qte}</p>
+      <p className="cardPrice">{props.article.price} € - {props.article.qte} restants</p>
       <p className='description'>{props.article.description}</p>
       {
         /* props.article.promo && <p className='promo'>PROMO</p> */

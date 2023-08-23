@@ -9,10 +9,30 @@
     background-color: rgb(255, 255, 255);
     position:relative;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
-
+.card img{
+    
+    transition: .2s all;
+}
+.cardImg{
+    overflow: hidden;
+    -webkit-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.45);
+    box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.45);
+}
+.cardImg:hover img{
+    transform: scale(110%);
+}
 .cardName{
+    color: red;
+    font-size: 1.2rem;
     font-weight: 900;
+}
+.cardPrice{
+    margin: .2rem 1rem;
+    font-style: oblique; 
 }
 .promo{
     position: absolute;

@@ -1,18 +1,16 @@
 .navMenu ul {
+    margin: 0;
     list-style-type: none;
+    z-index: 100;
     color: #fff;
     position: absolute;
-    top: 10vh;
-    height: 85vh;
-    width: 90%;
+    top: 8vh;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
-    background: #bfbcbc;
-    background: linear-gradient(324deg, #bfbcbc 0%, #ffffff 80%);
-    background: -webkit-linear-gradient(324deg, #bfbcbc 0%, #ffffff 80%);
-    background: -moz-linear-gradient(324deg, #bfbcbc 0%, #ffffff 80%);
-    box-shadow: 4px 4px 5px 0px rgba(170, 168, 168, 0.75);
-    -webkit-box-shadow: 4px 4px 5px 0px rgba(170, 168, 168, 0.75);
-    -moz-box-shadow: 4px 4px 5px 0px rgba(170, 168, 168, 0.75);
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
 }
 
 .navMenu {
@@ -25,15 +23,19 @@
 
 .navMenu a {
     text-decoration: none;
-    color: #464646;
+    color: #fff;
+    font-weight: 900;
+    margin: .2rem;
 }
 
 .navMenu a:hover {
     cursor: pointer;
 }
+
 .navMenu li {
     padding: .5rem
 }
+
 .navMenu li:hover {
     backdrop-filter: blur(5px);
 }
@@ -43,22 +45,77 @@
     display: inline-block;
     margin: .5rem;
     font-size: 2rem;
-    color: #464646;
+    color: red;
 }
 
 .logo:hover,
 .burger:hover {
-    cursor:pointer;
+    cursor: pointer;
+    color: #ff4b6c;
 }
-@media screen and (min-width:576px){
-    .navMenu ul{
+/* 
+========================
+      BUTTON THREE
+========================
+*/
+.btn {
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+  }
+  .btn-three {
+      color: #FFF;
+      transition: all 0.5s;
+      position: relative;
+    }
+    .btn-three::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: rgba(255,255,255,0.1);
+      transition: all 0.3s;
+    }
+    .btn-three:hover::before {
+      opacity: 0 ;
+      transform: scale(0.5,0.5);
+    }
+    .btn-three::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0;
+      transition: all 0.3s;
+      border: 1px solid rgba(255,255,255,0.5);
+      transform: scale(1.2,1.2);
+    }
+    .btn-three:hover::after {
+      opacity: 1;
+      transform: scale(1,1);
+    }
+@media screen and (min-width:576px) {
+    .navMenu{
+        width: 96.5%;
+
+    }
+
+    .navMenu ul {
         position: static;
         display: flex;
-        margin-right: .5rem;
-        background: none;
         height: fit-content;
+        justify-content: space-between;
     }
-    .burger{
+
+    .burger {
         display: none;
     }
 }

@@ -14,7 +14,9 @@ const Bouton = (props)=>{
     }
     let isActive = boutiqueContext.articles[props.id].qte === 0 ? true : false
     return(
-        <button onClick={()=>{handleClick()}}
+        <button 
+        className='btnCard'
+        onClick={()=>{handleClick()}}
         disabled = {isActive}
         >Acheter</button>
     )

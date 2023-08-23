@@ -3,16 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { MenuContext } from '../../MenuContext';
 import "./Menu.css"
-/* function responsive() {
-    let orientation;//true=>mobile
-    // ou utiliser l'event "deviceOrientation"
-    if (window.innerWidth > window.innerHeight) {
-        orientation = false;
-    } else {
-        orientation = true;
-    }
-    return orientation;
-} */
 function Logo() {
     return <div className="logo">
         <i className="fa-solid fa-record-vinyl"></i>
@@ -21,12 +11,20 @@ function Logo() {
 }
 function MenuEntrie(props) {
     const menuContext = useContext(MenuContext);
+    /* utiliser un switch case pour determiner au onClick
+    la gestion des displayPanier, displayBoutique, displayContact */
     return (
-        <a href={props.url} onClick={(e)=>{
-            e.preventDefault();
-            props.text === "Panier" ?
-             menuContext.fonctDisplayPanier(menuContext.displayPanier)
-            : <></>
+        <a href={props.url}
+            className='btn btn-three'
+            onClick={(e) => {
+                e.preventDefault();
+                /* detect orientation first
+                menuContext.burgerButton(menuContext.displayUl)
+                */
+                props.text === "Panier" ?
+                    menuContext.fonctDisplayPanier(menuContext.displayPanier)
+                    :
+                    <></>
             }}>
             <li>{props.text}</li>
         </a>

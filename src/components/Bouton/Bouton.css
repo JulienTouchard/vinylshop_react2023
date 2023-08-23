@@ -1,0 +1,18 @@
+.btnCard{
+    width: 100%;
+    padding: .1rem .5rem .1rem .5rem;
+    font-weight: 900;
+    border: .5rem solid red;
+    -webkit-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.45);
+    box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.45);
+    border-radius: .5rem;
+    transition: all .2s;
+    margin-top: auto;
+}
+.btnCard:hover{
+    cursor: pointer;
+    transform: translate(0,-2px);
+    color: red;
+    border-color: #ff4b6c;
+
+}
