@@ -1,1 +1,106 @@
+@keyframes Color {
+    0% {
+        color: #A0D468;
+    }
 
+    20% {
+        color: #4FC1E9;
+    }
+
+    40% {
+        color: #FFCE54;
+    }
+
+    60% {
+        color: #FC6E51;
+    }
+
+    80% {
+        color: #ED5565;
+    }
+
+    100% {
+        color: #AC92EC;
+    }
+}
+
+@-moz-keyframes Color {
+    0% {
+        color: #A0D468;
+    }
+
+    20% {
+        color: #4FC1E9;
+    }
+
+    40% {
+        color: #FFCE54;
+    }
+
+    60% {
+        color: #FC6E51;
+    }
+
+    80% {
+        color: #ED5565;
+    }
+
+    100% {
+        color: #AC92EC;
+    }
+}
+
+@-webkit-keyframes Color {
+    0% {
+        color: #A0D468;
+    }
+
+    20% {
+        color: #4FC1E9;
+    }
+
+    40% {
+        color: #FFCE54;
+    }
+
+    60% {
+        color: #FC6E51;
+    }
+
+    80% {
+        color: #ED5565;
+    }
+
+    100% {
+        color: #AC92EC;
+    }
+}
+
+.video {
+    position: fixed;
+    z-index: -1;
+    width: 
+    400%;
+    transform: translate(-37%,-15%);
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    margin-top: -4rem;
+    animation: Color 4s linear infinite;
+    -webkit-animation: Color 4s ease-in-out infinite;
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.2);
+}
+@media screen and (min-width:576px) {
+    .video {
+        width: 150%;
+        transform: translate(-15%,-15%);
+    }
+    h1{
+        margin-bottom: 5rem;
+        margin-top: 1rem;
+    }
+}

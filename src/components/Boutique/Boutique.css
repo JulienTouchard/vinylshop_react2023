@@ -1,7 +1,19 @@
 .boutique{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 95%;
-    margin: 0 auto;
+    width: 100%;
+
+}
+@media screen and (min-width: 576px){
+    .boutique{
+
+        margin: 0 .5rem .5rem .5rem;
+    }
+    
+}
+@media screen and (min-width: 1024px){
+    .boutique{
+        margin: 0 .5rem .5rem .5rem;
+    }
+    
 }

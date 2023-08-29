@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu } from './components/Menu/Menu';
 import Boutique from './components/Boutique/Boutique';
 import './App.css';
@@ -7,12 +7,30 @@ import { BoutiqueContext } from './BoutiqueContext';
 import { Footer } from './components/Footer/Footer';
 import { MenuContext } from './MenuContext';
 import { Panier } from './components/Panier/Panier';
+import backgroudVideo from './tunnel_-_27438 (1080p).mp4';
+
 function App() {
+  const updateOrientation = () => {
+    if (window.innerWidth > window.innerHeight) {
+      setStateMenu({
+        ...stateMenu,
+        "displayUl": true//landscape
+      })
+    } else {
+      setStateMenu({
+        ...stateMenu,
+        "displayUl": false//portrait
+      })
+    }
+  }
+
   // declaration des mes states
   const [stateMenu, setStateMenu] = useState(
     {
       "displayPanier": false,
-      "displayUl": !responsive(),
+      "displayBoutique": true,
+      "displayContact": false,
+      "displayUl": updateOrientation,
       "tabMenuNav": [
         {
           text: "Magasin",
@@ -31,11 +49,13 @@ function App() {
         }
       ],
       "burgerButton": burgerButton,
-      "fonctDisplayPanier": fonctDisplayPanier
+      "fonctDisplayPanier": fonctDisplayPanier,
+      "fonctDisplayBoutique": fonctDisplayBoutique,
+      "updateOrientation": updateOrientation,
+
       /* ajouter les deux fonction display pour Boutique et Contact */
     }
   )
-
   const [stateArticles, setStateArticles] = useState(
     {
       "articles": articles,
@@ -45,22 +65,27 @@ function App() {
       "incrementQte": incrementQte
     }
   );
-  function responsive() {
-    let orientationTmp;//true=>mobile
-    // ou utiliser l'event "deviceOrientation"
-    if (window.innerWidth > window.innerHeight) {
-      orientationTmp = false;//paysage
-    } else {
-      orientationTmp = true;//portrait
+  // detection mobile
+
+  useEffect(() => {
+    window.addEventListener('resize',
+      updateOrientation
+    )
+    return () => {
+      window.removeEventListener('resize',
+        updateOrientation
+      )
     }
-    return orientationTmp;
-  }
+  }, [])
+
+
   function burgerButton(disp) {
     //let displayUlTmp = !stateMenu.displayUl
     if (disp) {
+
       document.body.style.height = 'auto';
       document.body.style.overflowY = 'visible';
-      
+
     } else {
       document.body.style.height = '100vh';
       document.body.style.overflowY = 'hidden';
@@ -70,21 +95,30 @@ function App() {
       "displayUl": !disp
     })
   }
-  /* creer une fonction pour l'affichage de boutique en fonction de displayBoutique ... */
-  /* creer une fonction pour l'affichage de boutique en fonction de displayContact ... */
+
   function fonctDisplayPanier(disp) {
     if (disp) {
       document.body.style.height = 'auto';
       document.body.style.overflowY = 'visible';
-      
+
     } else {
       document.body.style.height = '100vh';
       document.body.style.overflowY = 'hidden';
     }
-
     setStateMenu({
       ...stateMenu,
+      "displayUl": disp,
       "displayPanier": !disp
+    })
+
+  }
+  /* creer une fonction pour l'affichage de boutique en fonction de displayBoutique ... */
+  /* creer une fonction pour l'affichage de boutique en fonction de displayContact ... */
+  function fonctDisplayBoutique() {
+    setStateMenu({
+      ...stateMenu,
+      "displayBoutique": !stateMenu.displayBoutique,
+      "displayContact": !stateMenu.displayContact,
     })
   }
   function decrementQte(id) {
@@ -169,10 +203,16 @@ function App() {
   return (
     <MenuContext.Provider value={stateMenu}>
       <BoutiqueContext.Provider value={stateArticles}>
+        <video autoPlay loop muted className="video">
+          <source src={backgroudVideo} type='video/mp4'></source>
+        </video>
         <header>
           <Menu></Menu>
         </header>
         <main>
+          <h1>
+            Pour vos soirées de foliiiiiiie 
+          </h1>
           {
             stateMenu.displayPanier ?
               <Panier></Panier>
@@ -180,7 +220,14 @@ function App() {
               <></>
           }
           {/* displayBoutique -> utiliser une bool dans le stateMenu*/}
-          <Boutique articles={stateArticles.articles}></Boutique>
+
+          {
+            stateMenu.displayBoutique ?
+              <Boutique articles={stateArticles.articles}></Boutique>
+            :
+            <></>
+          }
+
           {/* displayContact -> utiliser une bool dans le stateMenu*/}
         </main>
         <Footer></Footer>

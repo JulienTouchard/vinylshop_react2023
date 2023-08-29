@@ -24,7 +24,8 @@ function MenuEntrie(props) {
                 props.text === "Panier" ?
                     menuContext.fonctDisplayPanier(menuContext.displayPanier)
                     :
-                    <></>
+                    menuContext.fonctDisplayBoutique()
+                    
             }}>
             <li>{props.text}</li>
         </a>
@@ -35,38 +36,11 @@ function Research() {
 }
 function Menu() {
     const menuContext = useContext(MenuContext);
-    //let orientation = responsive();//true=>mobil ne marchera pas dans la vue
-    // utilisation de state dans un component fonctionnel
-    /* const [orientation, setOrientation] = React.useState(responsive());
-    const [displayUl, setDisplayUl] = React.useState(orientation ? false : true);
-    const [tabMenuNav, settabMenuNav] = React.useState(
-        [
-            {
-                text: "Magasin",
-                url: "#",
-                isActive: false
-            },
-            {
-                text: "Panier",
-                url: "#",
-                isActive: false
-            },
-            {
-                text: "Contact",
-                url: "#",
-                isActive: false
-            }
-        ]
-    ); */
-    /* window.addEventListener("resize", () => {
-        setOrientation(responsive());
-        setDisplayUl(!orientation);
-    }); */
     return (
         <nav className="navMenu ">
             <Logo></Logo>
             {
-                menuContext.displayUl ?
+                menuContext.displayUl  ?
                     <ul>
                         {
                             menuContext.tabMenuNav.map((valeur, index) => {
@@ -83,7 +57,9 @@ function Menu() {
                     <></>
             }
             <Research></Research>
-            <div onClick={() => menuContext.burgerButton(menuContext.displayUl)} className="burger">
+            <div onClick={() => {
+                menuContext.burgerButton(menuContext.displayUl)
+                }} className="burger">
                 <FontAwesomeIcon icon={faBars} />
             </div>
         </nav>

@@ -46,6 +46,7 @@
     margin: .5rem;
     font-size: 2rem;
     color: red;
+    transition: .2s all;
 }
 
 .logo:hover,
@@ -104,18 +105,16 @@
     }
 @media screen and (min-width:576px) {
     .navMenu{
-        width: 96.5%;
-
+        width: 99%;
     }
-
     .navMenu ul {
         position: static;
         display: flex;
         height: fit-content;
         justify-content: space-between;
     }
-
     .burger {
         display: none;
     }
 }
+
